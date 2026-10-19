@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import api from "../services/api";
+import FormFields from "../components/FormFields";
 
 export default function ItemForm() {
   const { id } = useParams();
@@ -72,78 +73,35 @@ export default function ItemForm() {
   }
 
   return (
-    <div className="container">
-      <div style={{ marginBottom: "20px" }}>
+    <div className="container-wide">
+      <div style={{ marginBottom: "20px", textAlign: "center" }}>
         <Link to="/" className="btn btn-secondary">- Voltar</Link>
       </div>
 
-      <div className="form-card">
-        <h2 style={{ marginBottom: "20px", color: "#1a5b8c" }}>
+      <div className="form-card-wide">
+        <h2 style={{ color: "#1a5b8c", fontSize: "1.6rem", marginBottom: "24px", textAlign: "center" }}>
           {isEditing ? "Editar Item" : "Novo Item"}
         </h2>
 
         {error && <div className="alert-error">{error}</div>}
 
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Nome:</label>
-            <input
-              type="text"
-              value={nome}
-              onChange={(e) => setNome(e.target.value)}
-              required
-            />
-          </div>
+          <FormFields
+            nome={nome}
+            setNome={setNome}
+            descricao={descricao}
+            setDescricao={setDescricao}
+            categoria={categoria}
+            setCategoria={setCategoria}
+            local={local}
+            setLocal={setLocal}
+            dataEncontrado={dataEncontrado}
+            setDataEncontrado={setDataEncontrado}
+            categoriasList={categoriasList}
+            locaisList={locaisList}
+          />
 
-          <div className="form-group">
-            <label>Descrição:</label>
-            <textarea
-              rows="3"
-              value={descricao}
-              onChange={(e) => setDescricao(e.target.value)}
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label>Categoria:</label>
-            <select
-              value={categoria}
-              onChange={(e) => setCategoria(e.target.value)}
-              required
-            >
-              <option value="">Selecione a categoria</option>
-              {categoriasList.map((cat, idx) => (
-                <option key={idx} value={cat}>{cat}</option>
-              ))}
-            </select>
-          </div>
-
-          <div className="form-group">
-            <label>Local:</label>
-            <select
-              value={local}
-              onChange={(e) => setLocal(e.target.value)}
-              required
-            >
-              <option value="">Selecione o local</option>
-              {locaisList.map((loc, idx) => (
-                <option key={idx} value={loc}>{loc}</option>
-              ))}
-            </select>
-          </div>
-
-          <div className="form-group">
-            <label>Data em que foi encontrado:</label>
-            <input
-              type="date"
-              value={dataEncontrado}
-              onChange={(e) => setDataEncontrado(e.target.value)}
-              required
-            />
-          </div>
-
-          <div style={{ display: "flex", gap: "10px", marginTop: "20px" }}>
+          <div style={{ display: "flex", gap: "10px", marginTop: "24px", justifyContent: "center" }}>
             <button type="submit" disabled={loading} className="btn btn-primary">
               {loading ? "Salvando..." : "Salvar"}
             </button>

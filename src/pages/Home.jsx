@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../services/api";
+import SearchFilters from "../components/SearchFilters";
 
 export default function Home() {
   const [user, setUser] = useState(null);
@@ -69,35 +70,18 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* Filtros */}
-      <div className="filters-bar">
-        <input
-          type="text"
-          placeholder="Buscar por nome ou descrição..."
-          value={busca}
-          onChange={(e) => setBusca(e.target.value)}
-        />
-
-        <select value={status} onChange={(e) => setStatus(e.target.value)}>
-          <option value="">Todos os status</option>
-          <option value="aguardando">Aguardando</option>
-          <option value="devolvido">Devolvido</option>
-        </select>
-
-        <select value={categoria} onChange={(e) => setCategoria(e.target.value)}>
-          <option value="">Todas as categorias</option>
-          {categorias.map((cat, idx) => (
-            <option key={idx} value={cat}>{cat}</option>
-          ))}
-        </select>
-
-        <select value={local} onChange={(e) => setLocal(e.target.value)}>
-          <option value="">Todos os locais</option>
-          {locais.map((loc, idx) => (
-            <option key={idx} value={loc}>{loc}</option>
-          ))}
-        </select>
-      </div>
+      <SearchFilters
+        busca={busca}
+        setBusca={setBusca}
+        status={status}
+        setStatus={setStatus}
+        categoria={categoria}
+        setCategoria={setCategoria}
+        local={local}
+        setLocal={setLocal}
+        categorias={categorias}
+        locais={locais}
+      />
 
       {error && <div className="alert-error">{error}</div>}
 
