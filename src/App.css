@@ -16,6 +16,13 @@ body {
   margin: 0 auto;
 }
 
+/* Contentor largo exclusivo para o formulário */
+.container-wide {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 /* Cabeçalho */
 header.app-header {
   display: flex;
@@ -80,7 +87,7 @@ header.app-header h1 {
   background-color: #dc2626;
 }
 
-/* Barra de Filtros corrigida com tamanhos proporcionais */
+/* Barra de Filtros */
 .filters-bar {
   display: flex;
   gap: 12px;
@@ -99,10 +106,7 @@ header.app-header h1 {
 }
 
 .filters-bar input,
-.filters-bar select,
-.form-group input,
-.form-group select,
-.form-group textarea {
+.filters-bar select {
   width: 100%;
   padding: 12px 14px;
   border: 1px solid #cbd5e1;
@@ -117,16 +121,7 @@ header.app-header h1 {
   color: #94a3b8;
 }
 
-.filters-bar input:focus,
-.filters-bar select:focus,
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
-}
-
-/* Lista de Itens na Home (Alinhados à esquerda, botão na direita) */
+/* Lista de Itens na Home */
 .items-grid {
   display: grid;
   gap: 16px;
@@ -162,15 +157,20 @@ header.app-header h1 {
   font-size: 0.9rem;
 }
 
-/* Cartão de Detalhes e Formulário (Centralizados e amplos) */
-.form-card {
+/* Cartão de Detalhes e Formulário */
+.form-card, .form-card-wide {
   background: white;
-  padding: 32px 80px;
+  padding: 32px 40px;
   border-radius: 10px;
   border: 1px solid #e2e8f0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  max-width: 800px;
+  width: 500px;
   margin: 0 auto;
+
+}
+
+.form-card-wide {
+  max-width: 1000px;
 }
 
 .card-detail {
@@ -188,7 +188,7 @@ header.app-header h1 {
   gap: 12px;
 }
 
-.card-detail h2, .form-card h2 {
+.card-detail h2, .form-card h2, .form-card-wide h2 {
   color: #1a5b8c;
   font-size: 1.6rem;
   font-weight: 700;
@@ -200,22 +200,41 @@ header.app-header h1 {
   color: #475569;
 }
 
+/* Estrutura dos grupos de formulário (Unificada e Fluida) */
 .form-group {
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin-bottom: 20px;
   text-align: left;
-
-  input {
-    width: 350px;
-  }
 }
 
 .form-group label {
   font-weight: 500;
   color: #334155;
   font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+  background-color: white;
+  color: #334155;
+}
+
+.filters-bar input:focus,
+.filters-bar select:focus,
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
 /* Badges de Status */
@@ -258,4 +277,3 @@ header.app-header h1 {
   margin-top: 16px;
   width: 100%;
 }
-
